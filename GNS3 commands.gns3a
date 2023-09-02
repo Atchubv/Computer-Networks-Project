@@ -1,0 +1,132 @@
+Configuration of Switches:
+SWITCH SW1:
+conf t
+int Fa1/0
+switchport mode trunk
+switchport trunk encapsulation dot1q
+exit
+int Fa1/4
+switchport mode trunk
+switchport trunk encapsulation dot1q
+exit
+int Fa1/5
+switchport mode trunk
+switchport trunk encapsulation dot1q
+exit
+int Fa1/1
+switchport mode access
+switchport access vlan 2
+exit
+int Fa1/2
+switchport mode access
+switchport access vlan 2
+exit
+int Fa1/3
+switchport mode access
+switchport access vlan 2
+exit
+
+int Fa1/4
+switchport access vlan 3
+end
+
+SWITCH SW2:
+conf t
+int Fa1/4
+switchport mode trunk
+switchport trunk encapsulation dot1q
+exit
+int Fa1/1
+switchport mode access
+switchport access vlan 3
+exit
+int Fa1/2
+switchport mode access
+switchport access vlan 3
+exit
+int Fa1/3
+switchport mode access
+switchport access vlan 3
+exit
+
+int Fa1/4
+switchport access vlan 2
+end
+
+SWITCH SW3:
+conf t
+int Fa1/5
+switchport mode trunk
+switchport trunk encapsulation dot1q
+exit
+int Fa1/1
+switchport mode access
+switchport access vlan 4
+exit
+int Fa1/2
+switchport mode access
+switchport access vlan 4
+exit
+int Fa1/3
+switchport mode access
+switchport access vlan 4
+
+exit
+int Fa1/5
+switchport access vlan 2
+end
+
+Configuration of Router Interface
+ROUTER R1:
+conf t
+int Fa0/0.2
+encapsulation dot1Q 2
+ip address 10.0.2.254 255.255.255.0
+end
+conf t
+int Fa0/0.3
+encapsulation dot1Q 3
+ip address 10.0.3.254 255.255.255.0
+end
+conf t
+int Fa0/0.4
+encapsulation dot1Q 4
+ip address 10.0.4.254 255.255.255.0
+end
+
+conf t
+int Fa0/0
+no shut
+end
+
+Configuration of PC’s:
+PC1:
+ip 10.0.2.1/24 10.0.2.254
+save
+PC2:
+ip 10.0.2.2/24 10.0.2.254
+save
+PC3:
+ip 10.0.2.3/24 10.0.2.254
+save
+PC4:
+ip 10.0.3.1/24 10.0.3.254
+save
+PC5:
+ip 10.0.3.2/24 10.0.3.254
+save
+PC6:
+ip 10.0.3.3/24 10.0.3.254
+save
+PC7:
+ip 10.0.4.1/24 10.0.4.254
+save
+PC8:
+ip 10.0.4.2/24 10.0.4.254
+save
+
+PC9:
+ip 10.0.4.3/24 10.0.4.254
+save
+
+
